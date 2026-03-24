@@ -14,11 +14,8 @@ public class JwtUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-//    private final Key key = Keys.hmacShaKeyFor(secret.getBytes());
-
     public String generateToken(String username) {
         Key key = Keys.hmacShaKeyFor(secret.getBytes());
-
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
